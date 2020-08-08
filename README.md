@@ -1,14 +1,17 @@
 # Binary Classifier
 
-## WIP
+A simple script that performs binary classification.
 
-As of right now I'm currently stuck on matching the number of features between training and validation set. None of my models can run without solving this issue first.
+We import the CSV files and upon analyzing the available datasets two problems are detected. The existance of 'NA' fields and string data. So, we drop any rows which contain nullfilable cells and then go about one-hot encoding using `pd.get_dummies`. 
 
-I used LabelEncoder and OneHotEncoder to tackle the problem of categorical data but apparently OneHotEncoder increases the number of features drastically!
+Multiple ML Algorithms were applied yet the better performing ones were SVM and Logistic Regression based models while the worst ones were Neural Network and Gaussian Bayes. 
 
-I tried using `pd.get_dummies` but to no avail. Also, I came across a stackoverflow answer which recommended combining both datasets into one but I couldn't get it to work. :( 
+A simple Flask endpoint was implement to serve the result in a JSON format.
 
 
-This script is written using *Jupyter Notebook* to easily visualise the data while working on it.
-
-Just simply fire up *Jupyter Notebook* and import `notebook.ipynb` and you're set to go.
+This project uses [Poetry](https://github.com/python-poetry/poetry)
+```
+poetry install
+export FLASK_ENV=development FLASK_APP=main.py
+poetry run flask run
+```
